@@ -1,0 +1,174 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #f9fbff, #eef2f7);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.dashboard-header {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.role-info {
+    font-size: 14px;
+    color: #555;
+}
+
+.logout-btn {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}
+
+.search-box {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+}
+
+.search-btn {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.search-btn:hover {
+    background-color: #1565c0;
+}
+
+.users-section h2 {
+    margin-bottom: 15px;
+}
+
+.card-table-wrapper {
+    overflow-x: auto;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.user-table th, .user-table td {
+    padding: 14px 20px;
+    text-align: left;
+}
+
+.user-table th {
+    background-color: #f3f6f9;
+    color: #555;
+}
+
+.user-table td {
+    border-top: 1px solid #f0f0f0;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.badge.active {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge.inactive {
+    background-color: #fdecea;
+    color: #a94442;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+}
+
+.icon-btn i {
+    stroke-width: 2;
+    width: 20px;
+    height: 20px;
+}
+
+/* Action Hover Effects */
+.icon-btn.view:hover {
+    background: #e3f2fd;
+}
+
+.icon-btn.edit:hover {
+    background: #fff3cd;
+}
+
+.icon-btn.deactivate:hover {
+    background: #fdecea;
+}
+
+.icon-btn.delete:hover {
+    background: #f8d7da;
+}
+
+/* ✅ New Button Styles */
+.icon-btn.activate {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.icon-btn.deactivate {
+    background-color: #e74c3c;
+    color: white;
+}

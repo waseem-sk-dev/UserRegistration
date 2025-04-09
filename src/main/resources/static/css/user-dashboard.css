@@ -1,0 +1,352 @@
+/* Global Reset & Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #003366;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+/* Profile Icon */
+.profile-icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00509e;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-icon {
+    font-size: 22px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.profile-icon-wrapper:hover {
+    background-color: #1c6dd0;
+    transform: scale(1.1);
+}
+
+.profile-icon-wrapper:hover .profile-icon {
+    color: #cde1ff;
+}
+
+.profile-icon::after {
+    content: "Update Profile";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0056b3;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.profile-icon-wrapper:hover .profile-icon::after {
+    opacity: 1;
+}
+
+/* Heading and Subtext */
+.header h1 {
+    margin: 0;
+    font-size: 26px;
+}
+
+.subtext {
+    font-size: 14px;
+    color: #cfd8e3;
+    margin-top: 4px;
+}
+
+/* Logout Button */
+.logout-form {
+    margin: 0;
+}
+
+.logout-form .logout-btn {
+    background-color: #dc3545;
+    padding: 10px 18px;
+    font-weight: bold;
+    color: #ffffff !important;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+}
+
+.logout-form .logout-btn:hover {
+    background-color: #b02a37;
+}
+
+/* Main Section */
+.main-section {
+    padding: 40px;
+    max-width: 960px;
+    margin: auto;
+    background-color: white;
+    border-radius: 10px;
+    margin-top: 40px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.main-section h2 {
+    margin-bottom: 10px;
+    color: #003366;
+}
+
+.username {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.role-note {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    flex: 1;
+    min-width: 220px;
+    padding: 20px;
+    background-color: #f1f5f9;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #003366;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Flash Message */
+.message {
+    margin: 20px auto;
+    padding: 12px 20px;
+    max-width: 600px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-left: 5px solid #28a745;
+}
+
+/* Loan Section */
+.loan-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f3f6ff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.loan-section h3 {
+    margin-bottom: 10px;
+}
+
+.apply-loan-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.apply-loan-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Applied Loans Section */
+.applied-loans-section {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8faff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.applied-loans-section h3 {
+    margin-bottom: 20px;
+    color: #003366;
+    font-size: 22px;
+    border-bottom: 2px solid #e3e9f7;
+    padding-bottom: 10px;
+}
+
+/* Table Styling */
+.loan-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.loan-table thead {
+    background-color: #e6f0ff;
+    color: #003366;
+    font-weight: bold;
+}
+
+.loan-table th, .loan-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.loan-table tbody tr:hover {
+    background-color: #f0f6ff;
+}
+
+.loan-table td {
+    color: #444;
+}
+
+/* Status Badge */
+.loan-table td .status {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.loan-table td .pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.loan-table td .approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.loan-table td .rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Applied Loans Table Wrapper */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.no-loans-message {
+    font-style: italic;
+    color: #666;
+}
+
+/* Profile Panel */
+.profile-container {
+    position: relative;
+}
+
+.profile-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.profile-panel {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 999;
+    width: 250px;
+    white-space: normal;
+}
+
+.profile-panel h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+.profile-panel p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.update-btn {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #2196f3;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.update-btn:hover {
+    background-color: #1976d2;
+}
