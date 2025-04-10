@@ -165,3 +165,27 @@ button:hover {
         font-size: 0.95rem;
     }
 }
+/* Password toggle styling */
+.password-field {
+    position: relative;
+    width: 100%;
+}
+
+.password-field input {
+    padding-right: 40px;
+}
+
+.password-field i {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #bbb;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.password-field i:hover {
+    color: #38f9d7;
+}

@@ -43,3 +43,14 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const nameElement = document.getElementById("profileName");
+    const infoPanel = document.getElementById("profileInfoPanel");
+
+    if (nameElement && infoPanel) {
+        nameElement.addEventListener("click", () => {
+            infoPanel.classList.toggle("visible");
+        });
+    }
+});
+

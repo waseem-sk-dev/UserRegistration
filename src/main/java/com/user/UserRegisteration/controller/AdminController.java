@@ -186,6 +186,59 @@ public class AdminController {
 	        model.addAttribute("keyword", keyword); // For showing in search box
 	        return "admin-dashboard";
 	    }
+	    @PostMapping("/approveLoan")
+	    public String approveLoan(@RequestParam Long loanId, RedirectAttributes redirectAttributes) {
+	        boolean isApproved = loanService.approveLoan(loanId); // Update status
+	        
+	        if (isApproved) {
+	            loanService.sendApprovalEmail(loanId); // Notify user
+	            redirectAttributes.addFlashAttribute("message", "Loan ID " + loanId + " has been approved successfully.");
+	            redirectAttributes.addFlashAttribute("messageType", "success");
+	        } else {
+	            redirectAttributes.addFlashAttribute("message", "Failed to approve Loan ID " + loanId + ". Please try again.");
+	            redirectAttributes.addFlashAttribute("messageType", "error");
+	        }
+
+	        return "redirect:/admin/dashboard";
+	    }
+
+	    @PostMapping("/loan/reject")  // Match your JSP form action
+	    public String rejectLoan(@RequestParam Long loanId,
+	                             @RequestParam String reason,
+	                             RedirectAttributes redirectAttributes) {
+	        boolean isRejected = loanService.rejectLoan(loanId, reason); // Update status & reason
+
+	        if (isRejected) {
+	            loanService.sendRejectionEmail(loanId, reason); // Notify user
+	            redirectAttributes.addFlashAttribute("message", "Loan ID " + loanId + " has been rejected.");
+	            redirectAttributes.addFlashAttribute("messageType", "error");
+	        } else {
+	            redirectAttributes.addFlashAttribute("message", "Failed to reject Loan ID " + loanId + ". Please try again.");
+	            redirectAttributes.addFlashAttribute("messageType", "error");
+	        }
+
+	        return "redirect:/admin/dashboard";  // Redirect to admin loan list after action
+	    }
+
+	    @GetMapping("/viewLoanDetails")
+	    public String viewLoanDetails(@RequestParam Long loanId, Model model, RedirectAttributes redirectAttributes) {
+	        LoanApplication loan = loanService.getLoanById(loanId);
+
+	        if (loan == null) {
+	            redirectAttributes.addFlashAttribute("message", "Loan application not found.");
+	            redirectAttributes.addFlashAttribute("messageType", "error");
+	            return "redirect:/admin/dashboard";
+	        }
+
+	        model.addAttribute("loan", loan);
+	        return "view-loan-details"; // JSP page to show loan details
+	    }
+	    @GetMapping("/rejectLoanForm")
+	    public String showRejectLoanForm(@RequestParam Long loanId, Model model) {
+	        LoanApplication loan = loanService.getLoanById(loanId);
+	        model.addAttribute("loan", loan);
+	        return "reject-loan-form"; // JSP located at /WEB-INF/views/admin/reject-loan-form.jsp
+	    }
 
 
 	  

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const usernameOrEmail = document.getElementById("usernameOrEmail");
     const rawPassword = document.getElementById("rawPassword");
 
-    // ===== Show SweetAlert popup from backend message (login error OR logout success) =====
+    // Flash Message SweetAlert
     const flash = document.getElementById("flashMessage");
     if (flash) {
         const msg = flash.getAttribute("data-message");
@@ -63,13 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showError(input, message) {
-        const error = input.nextElementSibling;
+        const error = input.parentElement.querySelector(".error-message");
         error.textContent = message;
         input.classList.add("error-border");
     }
 
     function clearError(input) {
-        const error = input.nextElementSibling;
+        const error = input.parentElement.querySelector(".error-message");
         error.textContent = "";
         input.classList.remove("error-border");
     }
@@ -79,3 +79,19 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".error-border").forEach(e => e.classList.remove("error-border"));
     }
 });
+
+// Toggle password visibility
+function togglePassword() {
+    const passwordInput = document.getElementById("rawPassword");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    }
+}

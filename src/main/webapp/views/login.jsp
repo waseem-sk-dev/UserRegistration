@@ -8,6 +8,9 @@
     <!-- External CSS for styling -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css">
 
+    <!-- Font Awesome for eye icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
@@ -33,7 +36,12 @@
 
         <div class="form-group">
             <label for="rawPassword">Password</label>
-            <input type="password" id="rawPassword" name="rawPassword" required placeholder="Enter your password">
+            <div class="password-wrapper">
+                <input type="password" id="rawPassword" name="rawPassword" required placeholder="Enter your password">
+                <span class="toggle-password" onclick="togglePassword()">
+                    <i id="eyeIcon" class="fa-regular fa-eye"></i>
+                </span>
+            </div>
             <div class="error-message"></div>
         </div>
 

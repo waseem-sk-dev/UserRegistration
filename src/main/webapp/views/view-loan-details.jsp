@@ -37,7 +37,7 @@
         </table>
 
         <div class="back-btn">
-            <a href="${pageContext.request.contextPath}/admin-dashboard" class="btn">Back to Dashboard</a>
+            <a href="${pageContext.request.contextPath}/admin/dashboard" class="btn">Back to Dashboard</a>
         </div>
     </div>
 </div>

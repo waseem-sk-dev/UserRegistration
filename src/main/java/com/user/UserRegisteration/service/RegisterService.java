@@ -136,7 +136,8 @@ public class RegisterService {
     public int increaseFailedAttempts(String email) {
         UserRegistration user = getUserByEmail(email);
         if (user != null) {
-            int newAttempts = user.getFailedAttempts() + 1;
+            int currentAttempts = (user.getFailedAttempts() != null) ? user.getFailedAttempts() : 0;
+            int newAttempts = currentAttempts + 1;
             userRepository.updateFailedAttempts(newAttempts, email);
 
             int remainingAttempts = 3 - newAttempts;
@@ -144,6 +145,7 @@ public class RegisterService {
         }
         return -1; // user not found
     }
+
 
     @Transactional
     public void resetFailedAttempts(String email) {
@@ -163,6 +165,13 @@ public class RegisterService {
     @Transactional
     public void lockUser(String email) {
     	userRepository.lockUser(email);
+    }
+    public void saveUser(UserRegistration user) {
+        userRepository.saveUser(user);
+    }
+
+    public String encodePassword(String rawPassword) {
+        return passwordEncoder.encode(rawPassword); // assuming BCrypt or similar
     }
 
 }

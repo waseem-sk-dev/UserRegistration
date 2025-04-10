@@ -10,7 +10,7 @@
 <body>
     <div class="edit-user-card">
         <h2><i class="fas fa-user-edit"></i> Edit User</h2>
-        <form action="${pageContext.request.contextPath}/updateUser" method="post" class="edit-user-form">
+        <form action="${pageContext.request.contextPath}/admin/updateUser" method="post" class="edit-user-form">
             <input type="hidden" name="id" value="${user.id}" />
 
             <div class="form-group">
@@ -45,7 +45,7 @@
 
             <div class="form-actions">
                 <button type="submit" class="btn-save">Save Changes</button>
-                <a href="${pageContext.request.contextPath}/admin-dashboard" class="btn-cancel">Cancel</a>
+                <a href="${pageContext.request.contextPath}/admin/dashboard" class="btn-cancel">Cancel</a>
             </div>
         </form>
     </div>

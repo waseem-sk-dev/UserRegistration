@@ -42,6 +42,16 @@ h2 {
     position: relative;
 }
 
+.password-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+}
+
 /* Labels */
 label {
     font-size: 1em;
@@ -65,6 +75,22 @@ input:focus {
     outline: none;
 }
 
+/* Eye Icon */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+    color: #007acc;
+}
+
 /* Error Messages */
 .error-message {
     font-size: 12px;
@@ -72,6 +98,11 @@ input:focus {
     position: absolute;
     bottom: -18px;
     left: 5px;
+}
+
+/* Error Border */
+.error-border {
+    border: 2px solid red !important;
 }
 
 /* Login Button */
@@ -94,12 +125,6 @@ input:focus {
     background: linear-gradient(to right, #1e88e5, #1aa3e9);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(33, 203, 243, 0.4);
-}
-
-
-/* Error Border */
-.error-border {
-    border: 2px solid red !important;
 }
 
 /* Links */

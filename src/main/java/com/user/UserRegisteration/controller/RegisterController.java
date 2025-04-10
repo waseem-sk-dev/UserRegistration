@@ -192,45 +192,57 @@ public class RegisterController {
         model.addAttribute("promptMessage", "Password updated successfully. Please log in.");
         return "login";
     }
-
-    @GetMapping("/viewUser")
-    public String viewUser(@RequestParam Long userId, Model model) {
-        UserRegistration user = service.getUserById(userId);
-        if (user != null) {
-            model.addAttribute("selectedUser", user);
-            return "view-user";
-        } else {
-            model.addAttribute("promptMessage", "User not found!");
-            return "redirect:/user-dashboard";
+    @GetMapping("/profile/update")
+    public String showUpdateProfileForm(Model model, HttpSession session) {
+        UserRegistration user = (UserRegistration) session.getAttribute("loggedInUser");
+        if (user == null) {
+            return "redirect:/login";
         }
-    }
-
-    @GetMapping("/editUserForm")
-    public String editUserForm(@RequestParam Long userId, Model model) {
-        UserRegistration user = service.getUserById(userId);
         model.addAttribute("user", user);
-        return "edit-user";
+        return "update-profile";  // your JSP form page
     }
 
-    @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute UserRegistration user, RedirectAttributes redirect) {
-        try {
-            boolean isUpdated = service.updateUser(user);
-            if (isUpdated) {
-            	service.sendNotificationEmail(user.getEmail(), "Account Update Notification",
-                        "Dear " + user.getFirstName() + ", your account details have been updated. " +
-                        "If you did not request this change, please contact support immediately.");
-                redirect.addFlashAttribute("promptMessage", "User updated successfully!");
-            } else {
-                redirect.addFlashAttribute("promptMessage", "User update failed.");
-            }
-        } catch (Exception e) {
-            redirect.addFlashAttribute("promptMessage", "An error occurred while updating the user.");
-            e.printStackTrace();
+    @PostMapping("/profile/update")
+    public String updateProfile(@ModelAttribute UserRegistration updatedUser,
+                                HttpServletRequest request,
+                                HttpSession session,
+                                RedirectAttributes redirectAttributes) {
+
+        UserRegistration loggedInUser = (UserRegistration) session.getAttribute("loggedInUser");
+        if (loggedInUser == null) {
+            redirectAttributes.addFlashAttribute("promptMessage", "Please log in again.");
+            return "redirect:/login";
         }
+
+        // Only update fields that are not null in the request
+        if (request.getParameter("firstName") != null) {
+            loggedInUser.setFirstName(updatedUser.getFirstName());
+        }
+
+        if (request.getParameter("lastName") != null) {
+            loggedInUser.setLastName(updatedUser.getLastName());
+        }
+
+        if (request.getParameter("mobile") != null) {
+            loggedInUser.setMobile(updatedUser.getMobile());
+        }
+
+        if (request.getParameter("location") != null) {
+            loggedInUser.setLocation(updatedUser.getLocation());
+        }
+
+        if (request.getParameter("password") != null && !updatedUser.getPassword().isEmpty()) {
+            loggedInUser.setPassword(service.encodePassword(updatedUser.getPassword()));
+        }
+
+        service.saveUser(loggedInUser); // Update DB
+        session.setAttribute("loggedInUser", loggedInUser); // Refresh session user
+
+        redirectAttributes.addFlashAttribute("promptMessage", "Profile updated successfully.");
         return "redirect:/user-dashboard";
     }
 
+    
     
         
 

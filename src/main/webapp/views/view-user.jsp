@@ -6,10 +6,15 @@
     <title>User Details</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user-details.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-     <script src="${pageContext.request.contextPath}/js/user-details.js" defer></script>
+    <script src="${pageContext.request.contextPath}/js/user-details.js" defer></script>
 </head>
 <body>
     <div class="container">
+        <!-- Flash Message -->
+        <c:if test="${not empty promptMessage}">
+            <div class="flash-message">${promptMessage}</div>
+        </c:if>
+
         <div class="card">
             <h2 class="card-title"><i class="fas fa-user-circle"></i> User Profile</h2>
             <table class="user-table">
@@ -24,10 +29,10 @@
                 <tr><th><i class="fas fa-user-shield"></i> Role:</th><td>${selectedUser.role}</td></tr>
             </table>
 
-            <div class="btn-group">
-                <a href="${pageContext.request.contextPath}/admin/dashboard" class="btn">
-                    <i class="fas fa-arrow-left"></i> Back to Dashboard</a>
-            </div>
+
+                <!-- Back Button -->
+                <a href="${pageContext.request.contextPath}/admin/dashboard" class="btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        
         </div>
     </div>
 </body>
